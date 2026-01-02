@@ -27,6 +27,42 @@
     };
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      format = "$all$character";
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+      };
+      git_branch = {
+        format = "[$symbol$branch]($style) ";
+        symbol = " ";
+      };
+      git_status = {
+        conflicted = "⚡";
+        ahead = "⇡\${count}";
+        behind = "⇣\${count}";
+        diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
+        up_to_date = "✓";
+        untracked = "?";
+        stashed = "$";
+        modified = "!";
+        staged = "+";
+        renamed = "»";
+        deleted = "✘";
+      };
+      directory = {
+        truncation_length = 3;
+        truncate_to_repo = true;
+      };
+      nix_shell = {
+        format = "[$symbol$state( \($name\))]($style) ";
+        symbol = " ";
+      };
+    };
+  };
+
   programs.bash = {
     enable = true;
     shellAliases = {
