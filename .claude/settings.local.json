@@ -13,7 +13,8 @@
       "Bash(secret-tool:*)",
       "WebFetch(domain:github.com)",
       "Bash(sudo journalctl:*)",
-      "Bash(journalctl:*)"
+      "Bash(journalctl:*)",
+      "Bash(fc-list:*)"
     ],
     "deny": [],
     "ask": [],

@@ -5,19 +5,32 @@
   home.homeDirectory = "/home/mike";
   home.stateVersion = "25.05";
 
+  home.packages = with pkgs; [
+  (pkgs.writeShellApplication {
+      name = "ns";
+      runtimeInputs = with pkgs; [
+        fzf
+        nix-search-tv
+      ];
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    })
+  ];
+
   programs.git = {
     enable = true;
     extraConfig = {
       user.name = "Mike Chester";
       user.email = "mike@chester.io";
       init.defaultBranch = "main";
+      pull.rebase = true;
+      alias.fix = "!git add -A && git commit --fixup HEAD && GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash HEAD~2";
     };
   };
 
   programs.bash = {
     enable = true;
     shellAliases = {
-      btw = "echo i use nixos, btw";
+      k = "kubectl";
     };
     profileExtra = ''
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
@@ -58,6 +71,14 @@
       " Remap Leader + n to open NERDTree
       nnoremap <Leader>n :NERDTreeToggle<CR>
     '';
+  };
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 24;
   };
 
   programs.atuin = {

@@ -19,6 +19,28 @@
   time.timeZone = "America/Vancouver";
   nixpkgs.config.allowUnfree = true;
 
+  environment.variables = {
+    EDITOR = "vim";
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
+      font-awesome
+      noto-fonts
+      noto-fonts-emoji
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMono Nerd Font" ];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+      };
+    };
+  };
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -51,6 +73,22 @@
       atuin-key = {
         source = "op://NixOS/atuin/key";
         path = "/home/mike/.local/share/opnix/atuin-key";
+        mode = "0600";
+        user = "mike";
+        group = "users";
+      };
+
+      ssh-key-private = {
+        source = "op://NixOS/ssh-key/private key";
+        path = "/home/mike/.ssh/id_ed25519";
+        mode = "0600";
+        user = "mike";
+        group = "users";
+      };
+
+      ssh-key-public = {
+        source = "op://NixOS/ssh-key/public key";
+        path = "/home/mike/.ssh/id_ed25519.pub";
         mode = "0600";
         user = "mike";
         group = "users";
@@ -95,8 +133,11 @@
     k9s
     killall
     kitty
+    kubectl
     libsecret
     networkmanager
+    pavucontrol
+    bibata-cursors
     rofi-wayland
     seahorse
     waybar

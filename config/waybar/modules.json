@@ -40,9 +40,9 @@
     // Rofi Application Launcher
     "custom/appmenu": {
         "format": "Apps",
-        "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings",
+        "tooltip-format": "Application Launcher",
         "on-click": "rofi -show drun -replace",
-        "tooltip": false
+        "tooltip": true
     },
     
     // Power Menu
@@ -72,9 +72,9 @@
 
     // Clock
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%a %b %d, %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
     // System
@@ -85,14 +85,18 @@
 
     // CPU
     "cpu": {
-        "format": "/ C {usage}% ",
-        "on-click": "alacritty -e htop"
+        "format": "󰻠 {usage}%",
+        "interval": 2,
+        "tooltip-format": "CPU Usage: {usage}%",
+        "on-click": "foot -e htop"
     },
 
     // Memory
     "memory": {
-        "format": "/ M {}% ",
-        "on-click": "alacritty -e htop"
+        "format": "󰍛 {percentage}%",
+        "interval": 2,
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G",
+        "on-click": "foot -e htop"
     },
 
     // Harddisc space used
@@ -126,9 +130,8 @@
     
   // Network
   "network": {
-    "format": "{ifname}",
     "format-wifi": " {essid} ({signalStrength}%)",
-    "format-ethernet": "  {ifname}",
+    "format-ethernet": "󰛳 ↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
     "format-disconnected": "Disconnected ⚠",
     "tooltip-format": " {ifname} via {gwaddri}",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
