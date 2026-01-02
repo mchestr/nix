@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hyprctl:*)",
+      "Bash(systemctl:*)",
+      "Bash(echo $SSH_AUTH_SOCK)",
+      "Bash(echo $GNOME_KEYRING_CONTROL)",
+      "Bash(loginctl show-session:*)",
+      "Bash(echo $XDG_SESSION_TYPE)",
+      "Bash(op:*)",
+      "Bash(python3:*)",
+      "Bash(secret-tool store:*)",
+      "Bash(secret-tool:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(sudo journalctl:*)",
+      "Bash(journalctl:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/etc",
+      "/home/mike/.local/share/keyrings"
+    ]
+  }
+}
