@@ -149,7 +149,9 @@
     ])
     ++
     (with pkgs-unstable; [
+      gamescope
       heroic
+      mangohud
       umu-launcher
     ]);
 
