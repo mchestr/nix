@@ -41,6 +41,11 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -55,6 +60,12 @@
   programs.steam = {
     enable = true;
     package = pkgs-unstable.steam;
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    heroic = pkgs.heroic.override {
+      extraPkgs = [ pkgs.gamescope pkgs.gamemode ];
+    };
   };
 
   opnix = {
@@ -111,6 +122,7 @@
   users.users.mike = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       tree
     ];
@@ -118,6 +130,8 @@
 
   programs.firefox.enable = true;
   programs.thunar.enable = true;
+  programs.gamescope.enable = true;
+  programs.zsh.enable = true;
 
   environment.systemPackages = 
     (with pkgs; [
