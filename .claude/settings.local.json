@@ -14,7 +14,8 @@
       "WebFetch(domain:github.com)",
       "Bash(sudo journalctl:*)",
       "Bash(journalctl:*)",
-      "Bash(fc-list:*)"
+      "Bash(fc-list:*)",
+      "WebFetch(domain:librephoenix.com)"
     ],
     "deny": [],
     "ask": [],

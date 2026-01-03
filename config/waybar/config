@@ -2,10 +2,10 @@
     "layer": "top",
     "position": "top",
     "height": 35,
-    "margin-top": 8,
-    "margin-bottom": 0,
-    "margin-left": 8,
-    "margin-right": 8,    
+    "margin-top": 0,
+    "margin-bottom": 2,
+    "margin-left": 0,
+    "margin-right": 0,    
     "spacing": 4,
 
     // Load Modules

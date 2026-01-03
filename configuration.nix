@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -54,6 +54,7 @@
   };
   programs.steam = {
     enable = true;
+    package = pkgs-unstable.steam;
   };
 
   opnix = {
@@ -118,33 +119,39 @@
   programs.firefox.enable = true;
   programs.thunar.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    bolt-launcher
-    brightnessctl
-    claude-code
-    discord
-    dunst
-    fastfetch
-    foot
-    git
-    gnome-keyring
-    hyprpaper
-    jq
-    k9s
-    killall
-    kitty
-    kubectl
-    libsecret
-    networkmanager
-    pavucontrol
-    bibata-cursors
-    rofi-wayland
-    seahorse
-    waybar
-    wget
-    wireplumber
-    xdg-desktop-portal-hyprland
-  ];
+  environment.systemPackages = 
+    (with pkgs; [
+      bibata-cursors
+      bolt-launcher
+      brightnessctl
+      claude-code
+      discord
+      dunst
+      fastfetch
+      foot
+      git
+      gnome-keyring
+      hyprpaper
+      jq
+      k9s
+      killall
+      kitty
+      kubectl
+      libsecret
+      networkmanager
+      pavucontrol
+      rofi-wayland
+      seahorse
+      waybar
+      wget
+      wireplumber
+      xdg-desktop-portal-hyprland
+    ])
+    ++
+    (with pkgs-unstable; [
+      heroic
+      umu-launcher
+    ]);
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.05";
